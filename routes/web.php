@@ -35,5 +35,4 @@ Route::middleware(['auth','verified'])
         Route::resource('types', TypeController::class)->except(['show','create','edit']);
     });
 
-
 require __DIR__.'/auth.php';
