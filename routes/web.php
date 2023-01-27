@@ -36,3 +36,8 @@ Route::middleware(['auth','verified'])
     });
 
 require __DIR__.'/auth.php';
+
+//rotta per tutte le rotte Vue, deve stare dopo tutte le altre
+//Route::get('{any?}',function(){
+//    return view('guest.home');
+//})->where('any','.*')->name('home');

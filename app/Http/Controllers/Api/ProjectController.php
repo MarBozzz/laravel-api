@@ -9,7 +9,13 @@ use Illuminate\Http\Request;
 class ProjectController extends Controller
 {
     public function index(){
-        $projects = Project::all();
+        $projects = Project::with(['type','technologies'])->get();
         return response()->json(compact('projects'));
+    }
+
+    public function show($slug){
+        $project = Project::where('slug',$slug)->with(['technologies','type',/*'user'*/])->first();
+
+        return response()->json($project);
     }
 }
