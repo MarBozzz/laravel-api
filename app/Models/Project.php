@@ -14,6 +14,10 @@ class Project extends Model
         return $this->belongsTo(Type::class);
     }
 
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
+
     public function technologies(){
         return $this->belongsToMany(Technology::class);
     }
@@ -32,5 +36,5 @@ class Project extends Model
         return $slug;
         }
 
-        protected $fillable = ['name','cover_image','client_name','summary','slug','cover_image_original_name', 'type_id'];
+        protected $fillable = ['name','cover_image','client_name','summary','slug','cover_image_original_name', 'type_id', 'user_id'];
 }

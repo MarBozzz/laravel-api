@@ -15,5 +15,8 @@
         <li class="">
             <a class="mb-nav-link" href="{{route('admin.types.index')}}"><i class="fa-solid fa-folder-open"></i> Manage Types</a>
         </li>
+        <li class="">
+           <a class="mb-nav-link" href="{{route('admin.technologies.index')}}"><i class="fa-solid fa-bookmark"></i> Technologies</a>
+        </li>
     </ul>
 </nav>
