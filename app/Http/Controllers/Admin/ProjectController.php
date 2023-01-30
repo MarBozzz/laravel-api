@@ -25,9 +25,9 @@ class ProjectController extends Controller
     {
         if(isset($_GET['search'])){
             $search = $_GET['search'];
-            $projects = Project::where('user_id', Auth::id())->where('name','like',"%$search%")->paginate(10);
+            $projects = Project::where('user_id', Auth::id())->where('name','like',"%$search%")->paginate(5);
             }else{
-            $projects = Project::where('user_id', Auth::id())->orderBy('id','desc')->paginate(10);
+            $projects = Project::where('user_id', Auth::id())->orderBy('id','desc')->paginate(5);
         }
         //$projects = Project::orderBy('id','desc')->paginate(10);
         $direction = 'desc';
@@ -39,10 +39,9 @@ class ProjectController extends Controller
         return view('admin.projects.list_type_project', compact('types'));
     }
 
-
     public function orderby($column, $direction){
         $direction = $direction === 'desc' ? 'asc' : 'desc';
-        $projects = Project::orderBy($column,$direction)->paginate(10);
+        $projects = Project::where('user_id', Auth::id())->orderBy($column,$direction)->paginate(5);
         return view('admin.projects.index', compact('projects','direction'));
     }
 

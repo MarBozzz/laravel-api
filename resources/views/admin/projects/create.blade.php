@@ -85,15 +85,15 @@
             </div>
 
             <div class="mb-3 text-black">
-                <label for="summary" class="form-label">Summary *</label>
-                <textarea name="summary" id="summary" rows="3">{{old('summary')}}</textarea>
+                <label for="summary" class="form-label text-white">Summary *</label>
+                <textarea class="@error('summary') is-invalid @enderror" name="summary" id="summary" rows="3">{{old('summary')}}</textarea>
                 @error('summary')
                     <p  class="invalid-feedback">
                         {{$message}}
                     </p>
                 @enderror
 
-            <button type="submit" class="btn btn-primary mb-5">Invia</button>
+            <button type="submit" class="btn btn-primary mt-2 mb-5">Submit</button>
         </form>
     </div>
 </div>

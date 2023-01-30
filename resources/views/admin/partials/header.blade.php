@@ -1,8 +1,8 @@
-<nav class="navbar navbar-expand-md navbar-light bg-dark shadow-sm">
-    <div class="container-fluid">
+<nav class="header-navbar navbar navbar-expand-md navbar-light bg-dark shadow-sm bg-black">
+    <div class="container-fluid ">
         <a class="navbar-brand d-flex align-items-center" href="{{route('home')}}">
-            <div class="logo text-white">
-                LOGO
+            <div class="logo">
+                MyLogo
             </div>
             {{-- config('app.name', 'Laravel') --}}
         </a>
@@ -15,7 +15,7 @@
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav me-auto">
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="{{route('home')}}"><i class="fa-solid fa-earth-americas"></i>Sito Guest</a>
+                    <a class="nav-link " href="{{route('home')}}"><i class="fa-solid fa-earth-americas"></i>&ensp;Sito Guest</a>
                 </li>
             </ul>
 
@@ -33,17 +33,17 @@
                 @endif
                 @else
                 <li>
-                    <form  action="{{route('admin.projects.index')}}" method="GET">
+                    <form action="{{route('admin.projects.index')}}" class="navbar-search d-flex justify-center align-items-center" method="GET">
                         @csrf
-                        <input class="form-control d-inline-block w-50" name="search" type="text" placeholder="Search?">
-                        <button class="btn btn-primary" type="submit">Search Name</button>
+                        <input class="form-control d-inline-block w-75" name="search" type="text" placeholder="Type name">
+                        <button class="btn btn-primary d-inline-block" type="submit">Search</button>
                     </form>
                 </li>
-                <li class="nav-item">
-                    <a class="dropdown-item text-white" href="{{ route('logout') }}" onclick="event.preventDefault();
+                <li class="nav-item mx-3 d-flex justify-content-evenly align-items-center">
+                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                         document.getElementById('logout-form').submit();">
-                        {{Auth::user()->name}}
-                        {{ __('Logout') }}
+                        User: {{Auth::user()->name}}
+                        &ensp;{{ __('Logout') }}
                     </a>
 
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">

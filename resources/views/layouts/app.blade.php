@@ -34,12 +34,12 @@
         <div class="container-fluid main-wrapper">
             <div class="row h-100">
                 @auth
-                    <div class="col-1 bg-dark">
+                    <div class="col-1 bg-black">
                         @include('admin.partials.aside')
                     </div>
                 @endauth
                 <div class=" @auth col-11 @endauth p-0">
-                    <main class="h-100">
+                    <main class="h-100 d-flex justify-center align-items-center">
                         @yield('content')
                     </main>
                 </div>

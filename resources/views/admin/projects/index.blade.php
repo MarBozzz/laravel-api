@@ -6,11 +6,11 @@
 @endsection
 
 @section('content')
-<div class="container h-100 w-50 d-flex flex-column justify-content-center">
+<div class="container h-100 w-75 d-flex flex-column justify-content-center">
     <h1 class="text-center my-3 color-white">Projects</h1>
 
     @if (session('deleted'))
-        <div class="alert alert-success" role="alert">
+        <div class="alert alert-success text-center" role="alert">
             {{session('deleted')}}
         </div>
     @endif
@@ -19,33 +19,34 @@
     <div class="table-wrapper w-100 d-flex flex-column align-items-center">
         <h3 class="mt-3">Total projects: {{$projects->total()}}</h3>
 
-        <div class="row w-50 d-flex justify-content-center">
+        <div class="row w-75 d-flex justify-content-center">
             <table class="table table-striped table-dark text-center my-5">
                 <thead>
                   <tr>
-                    <th>
+                    <th scope="col"  class="">
                         <a href="{{ route('admin.projects.orderby',['id',$direction]) }}">ID</a>
                     </th>
-                    <th class="w-100">
+                    <th scope="col" class="">
                         <a href="{{ route('admin.projects.orderby',['name',$direction]) }}">Project Name</a>
                     </th>
-                    <th>Technology</th>
-                    <th class="">Actions</th>
+                    <th scope="col" class="technology">Technology</th>
+                    <th scope="col" class="">Actions</th>
                   </tr>
                 </thead>
                 <tbody>
                     @forelse ($projects as $project)
                         <tr>
                             <td>{{$project->id}}</td>
-                            <td>{{$project->name}} <span class="badge text-bg-light">{{ $project->type?->name }}</span></td>
-                            <td>@forelse ($project->technologies as $technology)
+                            <td>{{$project->name}}
+                                &ensp; <span class="badge ">{{ $project->type?->name }}</span></td>
+                            <td class="">@forelse ($project->technologies as $technology)
                                 <span class="badge text-bg-warning">{{$technology->name}}</span>
                             @empty
-                                No Results
+                                <span class="text-center">No Results</span>
                             @endforelse</td>
                             <td class="d-flex justify-content-end">
-                                <a class="btn btn-primary" href="{{route('admin.projects.show', $project)}}" title="show"><i class="fa-solid fa-circle-info"></i></a>
-                                <a class="btn btn-success mx-2" href="{{route('admin.projects.edit', $project)}}" title="edit"><i class="fa-solid fa-pen-to-square"></i></a>
+                                <a class="btn btn-primary d-flex flex-column" href="{{route('admin.projects.show', $project)}}" title="show"><i class="fa-solid fa-circle-info"></i><span>View</span></a>
+                                <a class="btn btn-warning mx-2 d-flex flex-column" href="{{route('admin.projects.edit', $project)}}" title="edit"><i class="fa-solid fa-pen-to-square"></i><span>Edit</span></a>
                                 <div class="d-inline">
                                     @include('admin.partials.form-delete',[
                                         'route' => 'projects',
@@ -56,7 +57,7 @@
                             </td>
                         </tr>
                     @empty
-                        <h2>NO RESULTS</h2>
+                        <h2 class="text-center">No Results</h2>
                     @endforelse
                 </tbody>
               </table>
@@ -64,7 +65,7 @@
                   {{$projects->links()}}
               </div>
             <div class="d-flex justify-content-center">
-                <a class="btn btn-warning mb-5" href="{{route('admin.projects.create')}}">Create New Project</a>
+                <a class="text-white new-project btn btn-success mb-5" href="{{route('admin.projects.create')}}">Create New Project</a>
             </div>
         </div>
     </div>

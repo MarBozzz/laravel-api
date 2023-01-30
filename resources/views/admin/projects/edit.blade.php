@@ -6,9 +6,9 @@
 @endsection
 
 @section('content')
-<div class="container h-100 ">
+<div class="container h-100 d-flex flex-column">
     @if (session('message'))
-        <div class="alert alert-success" role="alert">
+        <div class="alert alert-success text-center" role="alert">
             {{session('message')}}
         </div>
     @endif
@@ -92,7 +92,7 @@
             </div>
 
             <div class="mb-3 text-black">
-                <label for="summary" class="form-label">Summary *</label>
+                <label for="summary" class="form-label text-white">Summary *</label>
                 <textarea class="form-control @error('summary') is-invalid @enderror" name="summary" id="summary" rows="3">{{old('summary',$project->summary)}}</textarea>
                 @error('summary')
                     <p  class="invalid-feedback">
@@ -101,9 +101,9 @@
                 @enderror
             </div>
 
-            <div class="buttons my-5">
-                <button type="submit" class="btn btn-success mb-0 w-100">Send Edit</button>
-                <a class="btn btn-warning w-100 mt-2" href="{{ route('admin.projects.show', $project) }}">Discard Edit</a>
+            <div class="buttons mb-2">
+                <button type="submit" class="btn btn-success mb-0">Send Edit</button>
+                <a class="btn btn-warning mt-2" href="{{ route('admin.projects.show', $project) }}">Discard Edit</a>
             </div>
         </form>
         <div class="d-inline">

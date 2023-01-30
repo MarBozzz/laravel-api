@@ -1,5 +1,5 @@
-<button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modal{{$entity->id}}">
-    DELETE
+<button type="button" class="btn btn-danger d-flex flex-column" data-bs-toggle="modal" data-bs-target="#modal{{$entity->id}}">
+    <i class="fa-solid fa-trash-can"></i><span>Delete</span>
 </button>
 
 <!-- Modal -->
