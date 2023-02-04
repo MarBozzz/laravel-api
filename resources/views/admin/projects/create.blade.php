@@ -8,9 +8,9 @@
 @section('content')
 <div class="container h-100 ">
     <h1 class="text-center my-5">Create a New Project</h1>
-    <div class="row d-flex">
+    <div class="row d-flex w-50 m-auto ">
         @if($errors->any())
-            <div class="alert alert-danger" role="alert">
+            <div class="alert alert-danger text-center" role="alert">
                 <ul>
                     @foreach ($errors->all() as $error)
                         <li>{{$error}}</li>
@@ -19,7 +19,7 @@
             </div>
         @endif
 
-<form class="text-white" action="{{route('admin.projects.store')}}" method="POST" enctype="multipart/form-data">
+<form class="text-white m-auto" action="{{route('admin.projects.store')}}" method="POST" enctype="multipart/form-data">
             @csrf
 
             <div class="mb-3">
@@ -47,7 +47,9 @@
             <div class="mb-3">
                 <p for="technology" class="form-label">Technology</p>
                 @foreach ($technologies as $technology)
-                    <input type="checkbox"
+                    <input
+                    class=""
+                    type="checkbox"
                     id="technology{{ $loop->iteration }}"
                     name="technologies[]"
                     value="{{ $technology->id }}"
