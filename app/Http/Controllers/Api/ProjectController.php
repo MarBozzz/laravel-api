@@ -45,6 +45,9 @@ class ProjectController extends Controller
     }
 
     public function getByTechnology($id){
+
+        //sfrutta gli id della tabella pivot
+
         /*$list_projects = [];
         $technology = Technology::where('id',$id)->with(['projects'])->first();
         foreach($technology->projects as $project){
